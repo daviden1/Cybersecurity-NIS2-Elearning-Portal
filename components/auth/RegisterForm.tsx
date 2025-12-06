@@ -22,6 +22,7 @@ export function RegisterForm() {
       full_name: fullName,
       company_name: companyName,
       role: 'student'
+          redirectUrl: typeof window !== 'undefined' ? `${window.location.origin}/auth/callback` : 'http://localhost:3000/auth/callback'
     })
     
     if (error) {

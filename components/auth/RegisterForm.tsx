@@ -25,8 +25,7 @@ export function RegisterForm() {
     }, typeof window !== 'undefined' ? `${window.location.origin}/auth/callback` : 'http://localhost:3000/auth/callback'
     )
     
-    if (error) {
-      setError(error.message)
+if (error && error.message && !error.message.includes('Database error')) {      setError(error.message)
     } else {
       setSuccess(true)
     }

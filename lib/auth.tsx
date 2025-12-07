@@ -13,7 +13,7 @@ interface AuthContextType {
   profile: UserProfile | null
   loading: boolean
   signIn: (email: string, password: string) => Promise<{ error: any }>
-  signUp: (email: string, password: string, metadata: any) => Promise<{ error: any }>
+  signUp: (email: string, password: string, metadata: any), redirectUrl?: string => Promise<{ error: any }>
   signOut: () => Promise<void>
   requires2FA: boolean
 }
@@ -140,13 +140,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   }
 
-  const signUp = async (email: string, password: string, metadata: any) => {
+  const signUp = async (email: string, password: string, metadata: any, redirectUrl?: string) => {
     try {
       const { error } = await supabase.auth.signUp({
         email,
         password,
         options: {
-          data: metadata
+          data: metadata,
+        emailRedirectTo: redirectUrl
         }
       })
       return { error }

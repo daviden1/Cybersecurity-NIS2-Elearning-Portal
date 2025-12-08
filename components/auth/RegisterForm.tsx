@@ -92,11 +92,11 @@ if (error && error.message && !error.message.includes('Database error')) {      
         <input 
           className="input" 
           type="password" 
-          placeholder="Almeno 12 caratteri"
+          placeholder="Almeno 8 caratteri"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
-          minLength={12}
+          minLength={8}
         />
       </div>
       {error && (

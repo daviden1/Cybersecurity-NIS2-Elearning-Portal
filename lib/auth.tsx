@@ -13,7 +13,13 @@ interface AuthContextType {
   profile: UserProfile | null
   loading: boolean
   signIn: (email: string, password: string) => Promise<{ error: any }>
-signUp: (email: string, password: string, metadata: any, redirectUrl?: string) => Promise<{ error: any }>  signOut: () => Promise<void>
+  signUp: (
+    email: string,
+    password: string,
+    metadata: any,
+    redirectUrl?: string
+  ) => Promise<{ error: any }>
+  signOut: () => Promise<void>
   requires2FA: boolean
 }
 
